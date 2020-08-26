@@ -33,8 +33,6 @@ const file = {
 
 ## Application launch
 
-* ### Install [Node.js](https://nodejs.org/)
-* ### In the project directory run `npm install`
-* ### Run `npm start`
-
-
+* Install [Node.js](https://nodejs.org/)
+* In the project directory run `npm install`
+* Run `npm start`
