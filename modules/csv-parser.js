@@ -19,7 +19,9 @@ const runParser = ({ inputSeparator, inputPath, outputPath }) => {
       const records = await runGeocoder(parserResults);
       csvWriter.writeRecords(records)
         .then(() => {
-          console.log(`Successfully! Processed ${records.length} lines.`);
+          if (records.length > 0) {
+            console.log(`Successfully! Processed ${records.length} lines`);
+          }
         })
         .catch((e) => console.log(`Error writing to file. ${e}`));
     });
