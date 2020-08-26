@@ -13,7 +13,7 @@ id,addr
 ...
 ```
 
-In case of using a different separator character in input.csv, customize the runParsing call in index.js:
+In case of using a different separator character in `input.csv`, customize the `runParsing` call in `index.js`:
 
 ```
 runParser({
@@ -21,7 +21,7 @@ runParser({
 ...
 ```
 
-You can also configure the location of the input and output file in index.js:
+You can also configure the location of the input and output file in `index.js`:
 
 ```
 // Paths config
