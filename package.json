@@ -1,0 +1,26 @@
+{
+  "name": "csv-geocoder",
+  "version": "1.0.0",
+  "description": "Determination of geocoordinates by address from csv file",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stigsanek/csv-geocoder.git"
+  },
+  "keywords": [],
+  "author": "Aleksandr Egorov <stigsanek@yandex.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stigsanek/csv-geocoder/issues"
+  },
+  "homepage": "https://github.com/stigsanek/csv-geocoder#readme",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "csv-parser": "^2.3.3",
+    "csv-writer": "^1.6.0",
+    "node-fetch": "^2.6.0"
+  }
+}
