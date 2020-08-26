@@ -8,7 +8,7 @@ const file = {
 };
 
 runParser({
-  inputSeparator: ';',
+  inputSeparator: ',',
   inputPath: file.input,
   outputPath: file.output
 });
