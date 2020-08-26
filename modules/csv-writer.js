@@ -5,9 +5,10 @@ const getCsvWriter = (path) => {
   return createCsvWriter({
     path: path,
     header: [
-      { id: 'id', title: 'ID' },
-      { id: 'addr', title: 'ADDR' },
-      { id: 'coord', title: 'COORD' }
+      { id: 'id', title: 'id' },
+      { id: 'addr', title: 'addr' },
+      { id: 'latitude', title: 'latitude' },
+      { id: 'longitude', title: 'longitude' }
     ]
   });
 };

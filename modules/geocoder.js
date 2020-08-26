@@ -2,6 +2,8 @@ const fetch = require('node-fetch');
 const Bluebird = require('bluebird');
 const colors = require('colors/safe');
 
+const { splitCoords } = require('./util');
+
 // Yandex API key
 const API_KEY = 'cc9d2649-e2ba-4711-b772-1c9367d9e5af';
 
@@ -17,10 +19,15 @@ const runGeocoder = async (arr) => {
       const response = await fetch(encodeURI(`${url}${item.addr}`));
       const result = await response.json();
 
+      const coords = splitCoords(
+        result.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
+      );
+
       results.push({
         id: item.id,
         addr: item.addr,
-        coord: result.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
+        latitude: coords.latitude,
+        longitude: coords.longitude
       });
     } catch (e) {
       console.log(colors.red(`Error on at id: ${item.id}. ${e}`));
