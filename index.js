@@ -8,9 +8,8 @@ const file = {
 };
 
 runParser({
+  apiKey: 'set_api_key', // set your api key Yandex
   inputSeparator: ',', // set separator symbol
   inputPath: file.input,
   outputPath: file.output
 });
-
-

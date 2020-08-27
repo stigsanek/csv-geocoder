@@ -3,7 +3,16 @@ Determination of geocoordinates by address from csv file
 
 ## Configuring data
 
-Add to `input.csv` data in format:
+* Set your api key Yandex in `index.js`:
+
+```
+runParser({
+  apiKey: 'set_api_key', // set your api key Yandex
+  ...
+)}
+```
+
+* Add to `input.csv` data in format:
 
 ```
 id,addr
@@ -13,15 +22,17 @@ id,addr
 ...
 ```
 
-In case of using a different separator character in `input.csv`, customize the `runParsing` call in `index.js`:
+* In case of using a different separator character in `input.csv`, customize the `runParsing` call in `index.js`:
 
 ```
 runParser({
+  ...
   inputSeparator: ',', // set separator symbol
-...
+  ...
+)}
 ```
 
-You can also configure the location of the input and output file in `index.js`:
+* You can also configure the location of the input and output file in `index.js`:
 
 ```
 // Paths config

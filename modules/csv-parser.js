@@ -9,7 +9,7 @@ const { renderResults } = require('./util');
 const parserResults = [];
 
 // Runs all processes
-const runParser = ({ inputSeparator, inputPath, outputPath }) => {
+const runParser = ({ apiKey, inputSeparator, inputPath, outputPath }) => {
   console.log(colors.blue('Started parsing...'));
   const csvWriter = getCsvWriter(outputPath);
 
@@ -18,7 +18,7 @@ const runParser = ({ inputSeparator, inputPath, outputPath }) => {
     .on('data', (data) => parserResults.push(data))
     .on('end', async () => {
       console.log(colors.magenta('Started geocoding...'));
-      const records = await runGeocoder(parserResults);
+      const records = await runGeocoder(apiKey, parserResults);
 
       csvWriter.writeRecords(records)
         .then(() => {

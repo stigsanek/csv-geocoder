@@ -6,7 +6,9 @@ const getCsvWriter = (path) => {
     path: path,
     header: [
       { id: 'id', title: 'id' },
-      { id: 'addr', title: 'addr' },
+      { id: 'addrSrc', title: 'addr src' },
+      { id: 'addrGeo', title: 'addr geo' },
+      { id: 'type', title: 'type' },
       { id: 'latitude', title: 'latitude' },
       { id: 'longitude', title: 'longitude' }
     ]

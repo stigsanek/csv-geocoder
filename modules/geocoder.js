@@ -4,14 +4,12 @@ const colors = require('colors/safe');
 
 const { splitCoords } = require('./util');
 
-// Yandex API key
-const API_KEY = 'cc9d2649-e2ba-4711-b772-1c9367d9e5af';
-
 fetch.Promise = Bluebird;
-const url = `https://geocode-maps.yandex.ru/1.x/?&apikey=${API_KEY}&format=json&geocode=`;
 
 // Runs geocoding process
-const runGeocoder = async (arr) => {
+const runGeocoder = async (apiKey, arr) => {
+  const url = `https://geocode-maps.yandex.ru/1.x/?&apikey=${apiKey}&format=json&geocode=`;
+
   const results = [];
   let currentLine = 0;
 
@@ -22,13 +20,16 @@ const runGeocoder = async (arr) => {
       const response = await fetch(encodeURI(`${url}${item.addr}`));
       const result = await response.json();
 
-      const coords = splitCoords(
-        result.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
-      );
+      const { metaDataProperty: { GeocoderMetaData },
+        Point } = result.response.GeoObjectCollection.featureMember[0].GeoObject;
+
+      const coords = splitCoords(Point.pos);
 
       results.push({
         id: item.id,
-        addr: item.addr,
+        addrSrc: item.addr,
+        addrGeo: GeocoderMetaData.Address.formatted,
+        type: GeocoderMetaData.kind,
         latitude: coords.latitude,
         longitude: coords.longitude
       });
