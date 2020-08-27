@@ -22,7 +22,8 @@ const runParser = ({ inputSeparator, inputPath, outputPath }) => {
       csvWriter.writeRecords(records)
         .then(() => {
           if (records.length > 0) {
-            console.log(colors.green(`Successfully! Processed ${records.length} lines`));
+            console.log(colors.green(`Successfully processed: ${records.length}`));
+            console.log(colors.red(`Handled with error: ${parserResults.length - records.length}`));
           }
         })
         .catch((e) => console.log(colors.red(`Error writing to file. ${e}`)));

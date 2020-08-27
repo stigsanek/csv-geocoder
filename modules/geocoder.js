@@ -13,8 +13,11 @@ const url = `https://geocode-maps.yandex.ru/1.x/?&apikey=${API_KEY}&format=json&
 // Runs geocoding process
 const runGeocoder = async (arr) => {
   const results = [];
+  let currentLine = 0;
 
   for (const item of arr) {
+    currentLine++;
+
     try {
       const response = await fetch(encodeURI(`${url}${item.addr}`));
       const result = await response.json();
@@ -29,9 +32,10 @@ const runGeocoder = async (arr) => {
         latitude: coords.latitude,
         longitude: coords.longitude
       });
+
+      console.log(colors.gray(`Processed: ${currentLine}`));
     } catch (e) {
-      console.log(colors.red(`Error on at id: ${item.id}. ${e}`));
-      break;
+      console.log(colors.red(`Error on at string: ${currentLine}. ${e}`));
     }
   }
 
