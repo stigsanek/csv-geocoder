@@ -4,6 +4,7 @@ const colors = require('colors/safe');
 const csvParser = require('csv-parser');
 const getCsvWriter = require('./csv-writer');
 const runGeocoder = require('./geocoder');
+const { renderResults } = require('./util');
 
 const parserResults = [];
 
@@ -21,10 +22,7 @@ const runParser = ({ inputSeparator, inputPath, outputPath }) => {
 
       csvWriter.writeRecords(records)
         .then(() => {
-          if (records.length > 0) {
-            console.log(colors.green(`Successfully processed: ${records.length}`));
-            console.log(colors.red(`Handled with error: ${parserResults.length - records.length}`));
-          }
+          renderResults(parserResults, records);
         })
         .catch((e) => console.log(colors.red(`Error writing to file. ${e}`)));
     });
